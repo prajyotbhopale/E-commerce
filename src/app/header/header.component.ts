@@ -7,9 +7,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
+  isadmin= false;
+
   constructor() { }
 
   ngOnInit(): void {
+    if(localStorage.getItem("usertype") == "admin")
+    this.isadmin = true;
   }
+
+  logout(){
+    localStorage.clear();
+    window.location.replace("../");
+  }
+
 
 }

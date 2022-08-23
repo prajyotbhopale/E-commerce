@@ -1,0 +1,34 @@
+<div class="container mt-5">
+    <h2>categories ({{ categories.length }})</h2>
+    <a routerLink="../category/0" class="btn btn-success pull-right float-right">Add categories</a>
+    <br><br>
+    <div class="row">
+        <div class="col-lg-12 table-responsive">
+            <table class="table table-bordered">
+                <tr>
+                    <th>Actions</th>
+                    <th>No</th>
+                    <th>Image</th>
+                    <th>categories</th>
+                   
+                </tr>
+                <tr *ngFor="let category of categories | paginate: { itemsPerPage: 3, currentPage: page ,totalItems:totalLenght} ;let i = index;">
+                    
+                    <td>
+                        <button routerLink="../category/{{ category._id }}" class="btn btn-primary"><i
+                                class="fa fa-edit"></i></button> &nbsp;
+                        <button class="btn btn-danger" (click)="deletecategory(category._id)"><i
+                                class="fa fa-trash"></i></button>
+                    </td>
+                    <td>{{ category.srno }}</td>
+                    <td><img src="{{ baseurl + category.imagepath }}" style="height:80px;" /></td>
+                    <td>{{ category.name }}</td>
+    
+                <br>
+            </table>
+                <pagination-controls class="text-center"(pageChange)="page = $event"></pagination-controls>
+           
+        </div>
+    </div>
+</div>
+<br>

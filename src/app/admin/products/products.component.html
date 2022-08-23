@@ -1,0 +1,35 @@
+<div class="container mt-5">
+    <h2>products ({{ products.length }})</h2>
+    <a routerLink="../product/0" class="btn btn-success pull-right float-right">Add products</a>
+    <br><br>
+    <div class="row">
+        <div class="col-lg-12 table-responsive">
+            <table class="table table-bordered">
+                <tr>
+                    <th>Actions</th>
+                    <th>No</th>
+                    <th>Image</th>
+                    <th>products</th>
+                   
+                </tr>
+                <tr *ngFor="let product of products | paginate: { itemsPerPage: 3, currentPage: page ,totalItems:totalLenght} ;let i = index;">
+                    
+                    <td>
+                        <button routerLink="../product/{{ product._id }}" class="btn btn-primary"><i
+                                class="fa fa-edit"></i></button> &nbsp;
+                        <button class="btn btn-danger" (click)="deleteproduct(product._id)"><i
+                                class="fa fa-trash"></i></button>
+                    </td>
+                    <td>{{ product.srno }}</td>
+                    <td><img src="{{ baseurl + product.imagepath }}" style="height:80px;" /></td>
+                    <td>{{ product.name }}</td>
+    
+                <br>
+            </table>
+                <pagination-controls class="text-center"(pageChange)="page = $event"></pagination-controls>
+           
+        </div>
+    </div>
+</div>
+<br>
+

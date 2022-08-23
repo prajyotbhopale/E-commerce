@@ -18,12 +18,19 @@
             <div class="row">
                 <div class="col-sm-12 text-left menu-1">
                     <ul>
-                        <li class="active"><a routerLink="">Home</a></li>
-    
+                        <li class="active"><a routerLink="home">Home</a></li>
                         <li><a routerLink="about">About</a></li>
                         <li><a routerLink="contact">Contact</a></li>
-                        <li class="cart"><a href="cart.html"><i class="icon-shopping-cart"></i> Cart [0]</a></li>
-                    </ul>
+                        <li class="has-dropdown" *ngIf="isadmin"><a >Adminstrator</a>
+                          <ul class="dropdown">
+                            <li><a routerLink="admin/categories">Categories</a></li>
+                            <li><a routerLink="admin/products">Products</a></li>
+                            <li><a routerLink="admin/orders">Orders</a></li>
+                            <li><a (click)="logout()" class="text-danger">Logout</a></li>
+                          </ul>
+                        </li>
+                        <li class="cart"><a><i class="icon-shopping-cart"></i> Cart [0]</a></li>
+                      </ul>
                 </div>
             </div>
         </div>
